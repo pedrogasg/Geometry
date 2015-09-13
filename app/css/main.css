@@ -1,0 +1,177 @@
+[draggable=true] {
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    /* Required to make elements draggable in old WebKit */
+    -khtml-user-drag: element;
+    -webkit-user-drag: element;
+    user-drag:element;
+}
+[draggable=false] {
+    -khtml-user-drag: none;
+    -webkit-user-drag: none;
+    user-drag:none;
+}
+*{
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;
+}
+.visual-container, .visual-rect{
+    position: absolute;
+    box-shadow: 0 0 2px 0 #424242;
+}
+.coordinate-rect{
+    position: absolute;
+    box-shadow: inset 0 0 0 1px #607D8B;
+}
+
+.visual-rect {
+    background-color: #FAFAFA;
+}
+
+.handler {
+    width: 100%;
+    height: 20px;
+    cursor: move;
+    background-color: #424242;
+    color: #ffffff;
+    text-align: center;
+    font-family: Calibri;
+    font-size: 12px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.resize-handler {
+    position: absolute;
+    font-size: 0.1px;
+    display: block;
+    -ms-touch-action: none;
+    touch-action: none;
+}
+.resize-handler-top {
+    cursor: n-resize;
+    height: 7px;
+    width: 100%;
+    top: -5px;
+    left: 0;
+}
+.resize-handler-bottom {
+    cursor: s-resize;
+    height: 7px;
+    width: 100%;
+    bottom: -5px;
+    left: 0;
+}
+.resize-handler-right {
+    cursor: e-resize;
+    width: 7px;
+    right: -5px;
+    top: 0;
+    height: 100%;
+}
+.resize-handler-left {
+    cursor: w-resize;
+    width: 7px;
+    left: -5px;
+    top: 0;
+    height: 100%;
+}
+.resize-handler-bottom_right {
+    cursor: se-resize;
+    width: 9px;
+    height: 9px;
+    right: -5px;
+    bottom: -5px;
+}
+.resize-handler-bottom_left {
+    cursor: sw-resize;
+    width: 9px;
+    height: 9px;
+    left: -5px;
+    bottom: -5px;
+}
+.resize-handler-top_left {
+    cursor: nw-resize;
+    width: 9px;
+    height: 9px;
+    left: -5px;
+    top: -5px;
+}
+.resize-handler-top_right {
+    cursor: ne-resize;
+    width: 9px;
+    height: 9px;
+    right: -5px;
+    top: -5px;
+}
+.rule-top, .rule-bottom, .rule-left, .rule-right{
+    position: absolute;
+    display: none;
+    top: 0;
+    left: 0;
+    opacity: 0.5;
+    pointer-events: none;
+    z-index: 99;
+}
+.rule-top, .rule-bottom{
+    border-top: 1px solid #03A9F4;
+    height: 0;
+    width: 100%;
+}
+.rule-left, .rule-right{
+    border-left: 1px solid #03A9F4;
+    height: 100%;
+    width: 0;
+}
+.fetlock {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    margin-top: -10px;
+    margin-left: -10px;
+}
+.fetlock-horizontal {
+    border-left: 4px dashed #607D8B;
+    border-right: 4px dashed #607D8B;
+    box-shadow: inset 0 2px 0 0 #607D8B, inset 0 -2px 0 0 #607D8B, 0 -2px 0 0 #607D8B, 0 2px 0 0 #607D8B;
+}
+.fetlock-vertical {
+    border-top: 4px dashed #607D8B;
+    border-bottom: 4px dashed #607D8B;
+    box-shadow: inset 2px 0 0 0 #607D8B, inset -2px 0 0 0 #607D8B, 2px 0 0 0 #607D8B, -2px 0 0 0 #607D8B;
+}
+.fetlock-horizontal.active{
+    border-top: 2px dashed #607D8B;
+    border-bottom: 2px dashed #607D8B;
+    border-left: none;
+    border-right: none;
+    box-shadow: inset 0 -2px 0 0 #607D8B, inset 0 2px 0 0 #607D8B, 0 2px 0 0 #607D8B, 0 -2px 0 0 #607D8B;
+    cursor: col-resize;
+}
+.fetlock-vertical.active {
+    border-left: 2px dashed #607D8B;
+    border-right: 2px dashed #607D8B;
+    border-top: none;
+    border-bottom: none;
+    box-shadow: inset -2px 0 0 0 #607D8B, inset 2px 0 0 0 #607D8B, -2px 0 0 0 #607D8B, 2px 0 0 0 #607D8B;
+    cursor: row-resize;
+}
+.coordinate-rect .fetlock-vertical{
+    left: 50%;
+}
+.coordinate-rect .fetlock-horizontal{
+    top: 50%;
+}
+.coordinate-rect .resize-handler{
+    display: none;
+}
+.coordinate-rect > .resize-handler{
+    display: block;
+}
+.coordinate-rect >.coordinate-rect > .resize-handler{
+    display: none;
+}
